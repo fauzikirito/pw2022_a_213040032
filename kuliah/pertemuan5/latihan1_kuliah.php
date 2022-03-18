@@ -1,6 +1,7 @@
 <?php 
 //ARRAY
 //Array adalah variabel yang dapat menampung lebih dari satu nilai sekaligus
+//Elemen pada Array boleh memiliki tipe data yang berbeda
 $hari1 = "Senin";
 $hari2 = "Selasa";
 
