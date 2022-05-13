@@ -9,7 +9,7 @@ $mahasiswa = [["nama" => "Fauzi Ilyas Nuryadi",
 
 [ "nama" => "Gilang Ramadhan",
 "npm" => "213040004",
-"email" => "gilangsky@gmail.com",
+"email" => "gilangsky11@gmail.com",
 "gambar" => "img/SAO.png",
 "row" => "2",
 "jurusan" => "Teknik Inormatika"]];
