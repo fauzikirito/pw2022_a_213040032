@@ -1,0 +1,107 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  background-color: #f8f8f8;
+}
+
+#bg-login {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-login {
+  width: 300px;
+  min-height: 200px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.box-login h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.input-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.btn {
+  color: white;
+  padding: 10px 15px;
+  background-color: #852a2a;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-rgister {
+  color: white;
+  padding: 10px 15px;
+  background-color: greenyellow;
+  border: none;
+  cursor: pointer;
+  place-content: left;
+}
+
+header {
+  background-color: #e51717;
+  color: white;
+}
+
+header h1 a {
+  float: left;
+  color: #000;
+  padding: 10px 0px;
+}
+
+header ul {
+  float: right;
+}
+
+header ul li {
+  display: inline-block;
+}
+
+header li a {
+  color: white;
+}
+
+header ul li a {
+  text-decoration: none;
+  padding: 20px 0px;
+  display: inline-block;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.container::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.beranda {
+  padding: 25px 0px;
+  border: 1px solid;
+}
+
+.box {
+  background-color: white;
+  border: 1px solid gray;
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 15px 0px;
+}
