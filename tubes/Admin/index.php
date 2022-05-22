@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <title>Toko Action Figure</title>
 </head>
@@ -21,9 +21,9 @@
 <!-- Header -->
     <header>
         <div class="container">
-            <h1><a href="">Saikyou</a></h1>
+            <h1><a href="index.php">Saikyou</a></h1>
                 <ul>
-                    <li><a href="beranda.php">Beranda</a></li>
+                    <li><a href="index.php">Beranda</a></li>
                     <li><a href="produk.php">Produk</a></li>
                     <li><a href="akun.php">Akun</a></li>
                     <li><a href="logout.php">Logout</a></li>

@@ -4,7 +4,7 @@ require 'functions.php';
     if(isset($_POST["tambah"])) {
         // Jalankan fungsi tambah();
         if(tambah($_POST) > 0) {
-            echo '<script> alert("Data berhasil ditambahkan"); window.location="index.php";</script>';
+            echo '<script> alert("Data berhasil ditambahkan"); window.location="kuliah_latihan1.php";</script>';
         }
     }
 
