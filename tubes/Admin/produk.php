@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../CSS/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <title>Toko Action Figure</title>
 </head>
@@ -69,8 +69,8 @@
                             <td><img src="../img/<?php echo $row['gambar_produk'] ?>" width="50px"></td>
                             <td><?php echo $row['status_produk'] ?></td>
                             <td>
-                                <a href="hapus-produk.php?id=<?php echo $row['id_produk'] ?>">Hapus</a>
-                                <a href="edit-produk.php?id=<?php echo $row['id_produk'] ?>">Edit</a>
+                                <a href="hapus.php?id=<?php echo $row['id_produk'] ?>" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+                                <a href="edit.php?idp=<?php echo $row['id_produk'] ?>">Edit</a>
                             </td>
                         </tr>
                         <?php }} else { ?>
