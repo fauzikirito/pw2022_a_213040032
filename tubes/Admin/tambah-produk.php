@@ -44,7 +44,7 @@
                     <input type="text" class="input-control" id="gambar" name="gambar_produk" placeholder="Gambar beserta formatnya" required>
                     <select class="input-control" name="status_produk">
                         <option value="">Pilih</option>
-                        <option value="1">Tersedia</option>
+                        <option value="1" >Tersedia</option>
                         <option value="0">Habis</option>
                     </select>
                     <br><br>
