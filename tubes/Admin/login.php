@@ -21,8 +21,8 @@ require "../function.php";
             <input type="text" name="username" placeholder="Username" class="input-control">
             <input type="password" name="password" placeholder="Password" class="input-control">
             <input type="submit" name="submit" value="Login" class="btn">
-        </form> 
-
+            <p class="message">Belum punya akun admin? <a href="register.php">Buat akun di sini</a></p>
+        </form>
         <!-- Pengecekkan Username & Password -->
         <?php 
             if(isset($_POST['submit'])) {

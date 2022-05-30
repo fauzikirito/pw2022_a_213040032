@@ -1,13 +1,15 @@
 <?php 
     require '../function.php';
 
-    $id = $_GET['id'];
+    if(isset($_GET['id'])) {
+        
+        $produk = mysqli_query($conn, "SELECT gambar_produk FROM produk WHERE id_produk = '".$_GET['id']."' ");
+        $p = mysqli_fetch_object($produk);
 
-    $query = "DELETE FROM produk WHERE id_produk = $id";
+        unlink('../img/'.$p->gambar_produk);
 
-    $result = mysqli_query($conn, $query);
+        $delete = mysqli_query($conn, "DELETE FROM produk WHERE id_produk = '".$_GET['id']."' ");
 
-    if($result) {
         header('Location:produk.php');
     } else {
         echo 'Data gagal dihapus';

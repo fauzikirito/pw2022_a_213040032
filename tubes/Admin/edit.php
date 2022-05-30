@@ -23,6 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <script src="//cdn.ckeditor.com/4.19.0/basic/ckeditor.js"></script>
     <title>Toko Action Figure</title>
 </head>
 <body>
@@ -46,11 +47,13 @@
         <div class="container">
             <h3>Edit Data Produk</h3>
             <div class="box">
-                <form action="" method="POST" autocomplete="off">
+                <form action="" method="POST" autocomplete="off" enctype="multipart/form-data">
                     <input type="text" class="input-control" id="nama_produk" name="nama_produk" placeholder="Nama Produk" value="<?php echo $p->nama_produk ?>" required>
                     <input type="text" class="input-control" id="harga" name="harga_produk" placeholder="Harga" value="<?php echo $p->harga_produk ?>" required>
                     <textarea class="input-control" name="deskripsi_produk" placeholder="Deskripsi" value="<?php echo $p->deskripsi_produk ?>"></textarea>
-                    <input type="text" class="input-control" id="gambar" name="gambar_produk" placeholder="Gambar beserta formatnya" value="<?php echo $p->gambar_produk ?>" required>
+                    <img src="../img/<?php echo $p->gambar_produk ?>" width="150px">
+                    <input type="hidden" name="foto" value="<?php echo $p->gambar_produk ?>">
+                    <input type="file" class="input-control" id="gambar" name="gambar_produk">
                     <select class="input-control" name="status_produk">
                         <option value="">Pilih</option>
                         <option value="1" <?php echo ($p->status_produk == 1)? 'selected':''; ?>>Tersedia</option>
@@ -59,36 +62,74 @@
                     <br><br>
                     <input type="submit" name="edit" value="Edit" class="btn">
                 </form>
-
+ 
                 <!-- Jika tombol tambah ditekan -->
                 <?php 
                     if(isset($_POST['edit'])) {
                         
-                        $id = $_GET['id'];
-                        $nama = $_POST["nama_produk"];
-                        $harga = $_POST["harga_produk"];
-                        $deskripsi = $_POST["deskripsi_produk"];
-                        $gambar = $_POST["gambar_produk"];
-                        $status = $_POST["status_produk"];
+                        // Data input dari form
+                        $nama       = $_POST["nama_produk"];
+                        $harga      = $_POST["harga_produk"];
+                        $deskripsi  = $_POST["deskripsi_produk"];
+                        $status     = $_POST["status_produk"];
+                        // Menampung variabel gambar baru
+                        $foto       = $_POST['foto'];
+
+                        // Data gambar baru
+                        $filename = $_FILES['gambar_produk']['name'];
+                        $tmp_name = $_FILES['gambar_produk']['tmp_name'];
+
+
+                        // Apabila admin mengganti gambar
+                        if($filename != '') {
+
+                            $type1 = explode('.', $filename);
+
+                            // Berisi format file
+                            $type2 = $type1[1];
+
+                            $newname = 'produk'.time().'.'.$type2;
+
+                            // Menampung format file yang diizinkan
+                            $tipe_diizinkan = array('jpg', 'jpeg', 'png', 'gif');
+                            
+                                // Validasi format file
+                            // Jika format file yang diupload, tidak ada pada variabel array di atas :
+                            if(!in_array($type2, $tipe_diizinkan)) {
+                                echo '<script>alert("Format File tidak diizinkan")</script>';
+                            } else {
+                            // Jika format file sesuai :
+                                // Hapus gambar lama
+                                unlink('../img/'.$foto);
+                                // Upload gambar baru
+                                move_uploaded_file($tmp_name, '../img/'.$newname);
+
+                                // Menampung data gambar baru
+                                $namagambar = $newname;
+                            }
+                        
+                        // Apabila admin tidak mengganti gambar 
+                        } else {
+                            $namagambar = $foto;
+                        }
                         
                         // Melakukan query edit pada database
-                        // $edit = mysqli_query($conn, "UPDATE produk SET
-                        //                      nama_produk = '".$nama."',
-                        //                      harga_produk = '".$harga."',
-                        //                      deskripsi_produk = '".$deskripsi."',
-                        //                      gambar_produk = '".$gambar."',
-                        //                      status_produk = '".$status."',  
-                        //                      WHERE id_produk = '".$p->id_produk."' ");
-
                         $edit = mysqli_query($conn, "UPDATE produk SET
-                                             nama_produk = '$nama',
-                                             harga_produk = '$harga',
-                                             deskripsi_produk = '$deskripsi',
-                                             gambar_produk = '$gambar',
-                                             status_produk = '$status'  
-                                             WHERE id_produk = '$id' ");
+                                             nama_produk = '".$nama."',
+                                             harga_produk = '".$harga."',
+                                             deskripsi_produk = '".$deskripsi."',
+                                             gambar_produk = '".$namagambar."',
+                                             status_produk = '".$status."'  
+                                             WHERE id_produk = '".$p->id_produk."' ");
 
-
+                        // $edit = mysqli_query($conn, "UPDATE produk SET
+                        //                      nama_produk = '$nama',
+                        //                      harga_produk = '$harga',
+                        //                      deskripsi_produk = '$deskripsi',
+                        //                      gambar_produk = '$namagambar',
+                        //                      status_produk = '$status'  
+                        //                      WHERE id_produk = '".$p->id_produk."' ");
+                        
                         if($edit) {
                             echo '<script>alert("Ubah data berhasil")</script>';
                             echo '<script>window.location="produk.php"</script>';
@@ -113,6 +154,9 @@
         </div>
     </footer>
 
+    <script>
+            CKEDITOR.replace('deskripsi_produk');
+    </script>
 
 </body>
 </html>
