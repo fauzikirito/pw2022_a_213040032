@@ -29,14 +29,14 @@ require "../function.php";
                 $username = mysqli_real_escape_string($conn, $_POST['username']);
 				$password = mysqli_real_escape_string($conn, MD5($_POST['password']));
                 $cek = mysqli_query($conn,"SELECT * FROM admin WHERE username='$username' AND password = '$password'");
-            if(mysqli_num_rows($cek) > 0) {
-                // $d = mysqli_fetch_object($cek);
-                $_SESSION['status_login'] = true;
-                // $_SESSION['admin_global'] = $d;
-                // $_SESSION['id'] = $d->id_admin;
-                echo '<script>window.location="index.php"</script>';
-            } else {
-                echo '<script>alert("Username atau Password salah")</script>';
+                if(mysqli_num_rows($cek) > 0) {
+                    // $d = mysqli_fetch_object($cek);
+                    $_SESSION['status_login'] = true;
+                    // $_SESSION['admin_global'] = $d;
+                    // $_SESSION['id'] = $d->id_admin;
+                    echo '<script>window.location="index.php"</script>';
+                } else {
+                    echo '<script>alert("Username atau Password salah")</script>';
             }
             }
 

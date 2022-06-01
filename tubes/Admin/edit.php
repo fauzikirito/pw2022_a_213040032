@@ -10,6 +10,12 @@
 
     // Menampilkan data produk
     $produk = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk = '".$_GET['id']."' " );
+
+    // Jika tidak ada data produk yang diubah maka akan kembali ke halaman produk
+    if(mysqli_num_rows($produk) == 0) {
+        echo '<script>window.location="produk.php"</script>';
+    }
+
     // Menampung data dari variable produk sebagai objek
     $p = mysqli_fetch_object($produk);
 
