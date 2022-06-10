@@ -18,10 +18,14 @@ require 'function.php';
 <!-- Header -->
     <header>
         <div class="container">
-            <h1><a href="index.php">Saikyou</a></h1>
-                <ul>
-                    <li><a href="produk.php">Produk</a></li>
-                </ul>
+                <h1><a href="index.php">Saikyou</a></h1>
+                <div class="menu_atas">
+                    <ul>
+                        <li><a href="index.php">Beranda</a></li>
+                        <li><a href="produk.php">Produk</a></li>
+                        <li><a href="keranjang.php">Keranjang Belanja</a></li>
+                    </ul>
+                </div>
         </div>
     </header>
 
@@ -30,7 +34,7 @@ require 'function.php';
 <!-- Search -->
     <div class="search">
         <div class="container">
-            <form action="produk.php">
+            <form action="">
                 <input type="text" name="search" placeholder="Cari Produk" id="keyword">
                 <input type="submit" name="cari" value="Cari" id="tombol-cari">
             </form>
@@ -49,9 +53,10 @@ require 'function.php';
         <div class="container">
             <h3>Produk Kami</h3>
             <!-- <div class="box"> -->
-
+                
                 <?php 
-                    $produk = mysqli_query($conn, "SELECT * FROM produk WHERE status_produk = 1 ORDER BY id_produk DESC");
+                    $where = "AND nama_produk LIKE '%".@$_GET['search']."%' ";
+                    $produk = mysqli_query($conn, "SELECT * FROM produk WHERE status_produk = 1 $where ORDER BY id_produk DESC");
                     if(mysqli_num_rows($produk) > 0) {
                         while($p = mysqli_fetch_array($produk)) {
                     

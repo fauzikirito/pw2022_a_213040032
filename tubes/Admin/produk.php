@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../CSS/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <title>Toko Action Figure</title>
 </head>
@@ -39,13 +39,16 @@
             <div class="box">
                 <p><a href="tambah-produk.php">Tambah Data Produk</a></p>
 
+    <!-- Cari -->
                 <form action="" class="form-cari" method="post">
                     <div class="cari">
-                        <input class="search" type="text" name="search" placeholder="Cari..." required>	
-                        <button for="search">Cari</button>
+                        <input class="search" type="text" name="search" placeholder="Cari..." id="keyword" required>	
+                        <button for="search" id="tombolCari">Cari</button>
                     </div>
                 </form>
-
+    <!-- Akhir Cari -->
+                
+            <div id=table>
                 <table border="1" cellspacing="0" class="table">
                     <thead>
                         <tr>
@@ -95,8 +98,34 @@
                     </tbody>
                 </table>
             </div>
+            </div>
         </div>
     </div>
+
+    <!-- Script Ajax -->
+    <script>
+        const keyword = document.getElementById('keyword');
+        const table = document.getElementById('table');
+
+        keyword.addEventListener('keyup', function() {
+            // Membuat Ajax
+            const xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+                //Cek kesiapan Ajax
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    table.innerHTML = xhr.responseText;
+                } 
+            }
+
+            // Jalankan Ajax
+            xhr.open("GET", "ajax/produk.php?keyword=" + keyword.value, true);
+            xhr.send();
+
+        });
+    </script>
+
+
 
     <!-- Footer -->
     <footer>

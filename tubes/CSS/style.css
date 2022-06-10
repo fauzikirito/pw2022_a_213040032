@@ -93,6 +93,10 @@ header ul li a {
   clear: both;
 }
 
+.container ul li {
+  text-transform: uppercase;
+}
+
 .beranda {
   padding: 25px 0px;
   border: 1px solid;

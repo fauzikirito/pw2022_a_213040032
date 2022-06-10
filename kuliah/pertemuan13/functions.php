@@ -68,7 +68,7 @@ function hapus($id) {
 }
 
 function ubah($data) {
-     $conn = koneksi();
+    $conn = koneksi();
     $id = $data['id'];
     $npm = htmlspecialchars($data["npm"]);
     $nama = htmlspecialchars($data["nama"]);
