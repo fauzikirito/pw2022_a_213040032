@@ -32,7 +32,7 @@ require "../function.php";
                 if(mysqli_num_rows($cek) > 0) {
                     $d = mysqli_fetch_object($cek);
                     $_SESSION['status_login'] = true;
-                    // $_SESSION['admin_global'] = $d;
+                    $_SESSION['admin_global'] = $d;
                     $_SESSION['id'] = $d->id_admin;
                     echo '<script>window.location="index.php"</script>';
                 } else {
